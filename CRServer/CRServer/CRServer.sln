@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRServer", "CRServer.csproj", "{5CB40C1D-CACE-4886-BF9E-3BA85AC42127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRConsole", "..\CRConsole\CRConsole.csproj", "{C5B8EE5B-DE44-4CC0-B16B-EC5F2E6B15F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRService", "..\CRService\CRService.csproj", "{9AE29C0C-773F-45C7-B112-817F14476CD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CB40C1D-CACE-4886-BF9E-3BA85AC42127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB40C1D-CACE-4886-BF9E-3BA85AC42127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB40C1D-CACE-4886-BF9E-3BA85AC42127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB40C1D-CACE-4886-BF9E-3BA85AC42127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B8EE5B-DE44-4CC0-B16B-EC5F2E6B15F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B8EE5B-DE44-4CC0-B16B-EC5F2E6B15F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B8EE5B-DE44-4CC0-B16B-EC5F2E6B15F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B8EE5B-DE44-4CC0-B16B-EC5F2E6B15F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE29C0C-773F-45C7-B112-817F14476CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE29C0C-773F-45C7-B112-817F14476CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE29C0C-773F-45C7-B112-817F14476CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE29C0C-773F-45C7-B112-817F14476CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

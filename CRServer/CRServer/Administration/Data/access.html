@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/css/metro.min.css" rel="stylesheet"/>
+    <link href="/css/metro-icons.css" rel="stylesheet">
+    <link href="/css/metro-responsive.css" rel="stylesheet">
+    <script src="/js/jquery-3.1.0.min.js"></script>
+    <script src="/js/metro.js"></script>
+    <title>Cash Register Administration</title>
+</head>
+<body>
+<div class="container">
+    <header class="margin20 no-margin-left no-margin-right">
+        <div class="clear-float">
+            <a class="place-left" href="#" title="">
+                <h1>Cash Register Administration</h1>
+            </a>
+        </div>
+
+        <div class="main-menu-wrapper">
+            <ul class="horizontal-menu" style="margin-left: -20px">
+                <li><a href="/">General</a></li>
+                <li><a href="/serial.html">Serial</a></li>
+                <li><a href="/access.html">Access</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="main-content clear-float">
+        <h4> Access Configuration </h4>
+        <div class="example" data-text="Allowed IP Addresses">
+            <table class="table striped hovered" id="main_table_demo">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th style="width: 1px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for addr in config.AllowedIpAddresses %}
+                <tr>
+                    <td>{{ addr }}</td>
+                    <td style="text-align: center">
+                        <button class="square-button mini-button" onclick="document.location = '/delete?ip={{ addr }}'">
+                            <span class="mif-bin fg-red" title="Delete this address"></span>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="grid">
+                <form method="POST" action="/add">
+                    <div class="row">
+                        <div class="cell">
+                            <label>Add IP Address:</label>
+                            <div class="input-control text full-size">
+                                <input type="text" name="ip">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            <div class="cell">
+                                <button type="submit" class="button primary"> ADD </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

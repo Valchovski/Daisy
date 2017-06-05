@@ -1,0 +1,1 @@
+F:\Projects\cashregister\CRServer\CRConsole\bin\Debug\CRConsole.exe.config

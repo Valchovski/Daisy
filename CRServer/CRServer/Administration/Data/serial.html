@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/css/metro.min.css" rel="stylesheet" />
+    <link href="/css/metro-icons.css" rel="stylesheet">
+    <link href="/css/metro-responsive.css" rel="stylesheet">
+    <script src="/js/jquery-3.1.0.min.js"></script>
+    <script src="/js/metro.js"></script>
+    <title>Cash Register Administration</title>
+</head>
+<body>
+    <div class="container">
+        <header class="margin20 no-margin-left no-margin-right">
+            <div class="clear-float">
+                <a class="place-left" href="#" title="">
+                    <h1>Cash Register Administration</h1>
+                </a>
+            </div>
+
+            <div class="main-menu-wrapper">
+                <ul class="horizontal-menu" style="margin-left: -20px">
+                    <li><a href="/">General</a></li>
+                    <li><a href="/serial.html">Serial</a></li>
+                    <li><a href="/access.html">Access</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="main-content clear-float">
+            <h4> Serial Port Configuration </h4>
+            <div class="example" data-text="serial port">
+                <div class="grid">
+                    {% if errors != empty %}
+                    <div class="row">
+                        <div class="cell">
+                            <div class="panel alert" style="margin-bottom: 20px">
+                                <div class="heading">
+                                    <span class="title">Errors</span>
+                                </div>
+                                <div class="content">
+                                    {% for err in errors %}
+                                    &rArr;&nbsp;{{ err }}<br/>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if success != empty %}
+                    <div class="row">
+                        <div class="cell">
+                            <div class="panel success" style="margin-bottom: 20px">
+                                <div class="heading">
+                                    <span class="title">Success</span>
+                                </div>
+                                <div class="content">
+                                    {% for msg in success %}
+                                    &rArr;&nbsp;{{ msg }}<br/>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <form action="/saveSerial" method="POST">
+                        <div class="row cells3">
+                            <div class="cell">
+                                <label>Serial Port</label>
+                                <div class="input-control select full-size">
+                                    <select name="port">
+                                        {% for port in config.SerialPorts %}
+                                        <option value="{{ port }}" {% if config.SerialPort == port %} selected="selected" {% endif %}>{{ port }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <label>Baudrate</label>
+                                <div class="input-control select full-size">
+                                    <select name="baudrate">
+                                        <option {% if config.Baudrate == 110 %}selected="selected" {% endif %}>110</option>
+                                        <option {% if config.Baudrate == 300 %}selected="selected" {% endif %}>300</option>
+                                        <option {% if config.Baudrate == 600 %}selected="selected" {% endif %}>600</option>
+                                        <option {% if config.Baudrate == 1200 %}selected="selected" {% endif %}>1200</option>
+                                        <option {% if config.Baudrate == 2400 %}selected="selected" {% endif %}>2400</option>
+                                        <option {% if config.Baudrate == 4800 %}selected="selected" {% endif %}>4800</option>
+                                        <option {% if config.Baudrate == 9600 %}selected="selected" {% endif %}>9600</option>
+                                        <option {% if config.Baudrate == 14400 %}selected="selected" {% endif %}>14400</option>
+                                        <option {% if config.Baudrate == 19200 %}selected="selected" {% endif %}>19200</option>
+                                        <option {% if config.Baudrate == 28800 %}selected="selected" {% endif %}>28800</option>
+                                        <option {% if config.Baudrate == 38400 %}selected="selected" {% endif %}>38400</option>
+                                        <option {% if config.Baudrate == 56000 %}selected="selected" {% endif %}>56000</option>
+                                        <option {% if config.Baudrate == 57600 %}selected="selected" {% endif %}>57600</option>
+                                        <option {% if config.Baudrate == 115200 %}selected="selected" {% endif %}>115200</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <label>Parity</label>
+                                <div class="input-control select full-size">
+                                    <select name="parity">
+                                        <option value=0 {% if config.ParityByte == 0 %}selected="selected" {% endif %}>None</option>
+                                        <option value=1 {% if config.ParityByte == 1 %}selected="selected" {% endif %}>Odd</option>
+                                        <option value=2 {% if config.ParityByte == 2 %}selected="selected" {% endif %}>Even</option>
+                                        <option value=3 {% if config.ParityByte == 3 %}selected="selected" {% endif %}>Mark</option>
+                                        <option value=4 {% if config.ParityByte == 4 %}selected="selected" {% endif %}>Space</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row cells3">
+                            <div class="cell">
+                                <label>Data bits</label>
+                                <div class="input-control select full-size">
+                                    <select name="databits">
+                                        <option value=5 {% if config.DataBits == 5 %}selected="selected" {% endif %}>5</option>
+                                        <option value=6 {% if config.DataBits == 6 %}selected="selected" {% endif %}>6</option>
+                                        <option value=7 {% if config.DataBits == 7 %}selected="selected" {% endif %}>7</option>
+                                        <option value=8 {% if config.DataBits == 8 %}selected="selected" {% endif %}>8</option>
+                                        <option value=9 {% if config.DataBits == 9 %}selected="selected" {% endif %}>9</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <label>Stop bits</label>
+                                <div class="input-control select full-size">
+                                    <select name="stopbits">
+                                        <option value=0 {% if config.StopBitsByte == 0 %}selected="selected" {% endif %}>None</option>
+                                        <option value=1 {% if config.StopBitsByte == 1 %}selected="selected" {% endif %}>One</option>
+                                        <option value=3 {% if config.StopBitsByte == 3 %}selected="selected" {% endif %}>One and a half</option>
+                                        <option value=2 {% if config.StopBitsByte == 2 %}selected="selected" {% endif %}>Two</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <label>Packet length</label>
+                                <div class="input-control text full-size">
+                                    <input type="text" name="packetlen" value="{{ config.PacketLength }}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row cells3">
+                            <div class="cell">
+                                <label>Read Timeout</label>
+                                <div class="input-control text full-size">
+                                    <input type="text" name="timeout" value="{{ config.ReadTimeout }}"/>
+                                </div>
+                            </div>
+                            <div class="cell"></div>
+                            <div class="cell">
+                                <button class="button primary place-right"> SAVE </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
